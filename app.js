@@ -29,20 +29,21 @@ app.controller("myCtrl",function($scope) {
         
         if ($scope.products.indexOf($scope.addMe) == -1) 
         {
-       	    $scope.date = new Date();
+       	$scope.date = new Date();
             
-      		  $scope.myTime.setFullYear($scope.date.getFullYear());
+            $scope.myTime.setFullYear($scope.date.getFullYear());
             $scope.myTime.setMonth($scope.date.getMonth());
             $scope.myTime.setDate($scope.date.getDate());
-           // console.log($scope.myTime);
-           // $scope.products.push(new Data($scope.addMe,$scope.myTime));
+           
+            $scope.products.push(new Data($scope.addMe,$scope.myTime));
             product.push(new Data($scope.addMe,$scope.myTime));
             json=JSON.stringify(product);
+              
 
             localStorage.setItem('testt',json);
 
             var eta_ms = $scope.myTime - Date.now();
- 			      var timeout = setTimeout(function() {
+ 	      var timeout = setTimeout(function() {
                 var audio = new Audio('file.mp3');
                 audio.play();
                 alert("reminder");}, eta_ms); 
